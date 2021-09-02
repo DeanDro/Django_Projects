@@ -7,3 +7,12 @@ def index(request):
     Creates the homepage
     """
     return render(request, 'index.html')
+
+def login(request):
+    """
+    Collect login information and confirm authentication
+    """
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        return render(request, 'dashboard.html', {'username': username, 'password': password})

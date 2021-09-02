@@ -2,17 +2,36 @@
 <html>
     <head>
         <title>OSU Hackathon Club - Login</title>
-        <link rel="stylesheet" type="text/css" href="../static/css/styles.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
     </head>
     <body>
-        <h1>Welcome to OSU Hackathon</h1>
-        <form method="POST">
-            <label for="username">Username:</label>
-            <input type="text" name="username"/>
-            <label for="password">Password:</label>
-            <input type="password" name="password"/>
-            <br>
-            <input type="submit"/>
-        </form>
+        <div class="container-fluid">
+            <img id="beaver_hack" src="https://clubs.oregonstate.edu/sites/clubs.oregonstate.edu/files/osu_hackathon_club_logo_icon_right.png" 
+            alt="beaver hack logo"/>
+            <h1 id="welcome_message">Welcome to OSU Hackathon</h1>
+        </div>
+        <div class="container-fluid">
+            <form method="POST" action="login">
+                <div class="group-form">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username"/>
+                </div>
+                <br>
+                <div class="group-form">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password"/>
+                </div>
+                <br>
+                <div class="group-form">
+                    <input type="submit"/>
+                </div>
+            </form>
+        </div>
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </body>
 </html>
