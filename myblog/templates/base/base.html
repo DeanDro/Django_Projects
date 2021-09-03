@@ -13,10 +13,29 @@
             }
             #right_block{
                 background-color: darkslategray;
-                height: fit-content;
+                display: flex;
             }
-            #right_block input{
+            html, body{
+                height: 100%;
+            }
+            #main_content{
+                height: 100%;
+            }
+            #navigation{
                 margin: 2%;
+                padding: 2%;
+                display: block;
+            }
+            #list_options{
+                list-style-type: none;
+            }
+            #list_options li{
+                margin-top: 10%;
+                font-size: large;
+            }
+            a{
+                color: white;
+                text-decoration: none;
             }
         </style>
     </head>
@@ -26,14 +45,16 @@
                 <img src="{% static 'media/osu_club.png' %}" alt="hackathon_club_logo" id="hack_logo"/>
             </a>
         </nav>
-        <div class="container-fluid">
-            <div class="row">
+        <div class="container-fluid" id="main_content">
+            <div class="row h-100">
                 <div class="col-md-2" id="right_block">
-                    <div class="btn-group-vertical" id="navigation" style="display: block;">
-                        <input type="button" class="btn btn-primary" value="New Project"/>
-                        <input type="button" class="btn btn-primary" value="Current Projects"/>
-                        <input type="button" class="btn btn-primary" value="Meetings"/>
-                        <input type="button" class="btn btn-primary" value="Members"/>
+                    <div id="navigation">
+                        <ul id="list_options">
+                            <li><a href="#" id="new_project">New Project</a></li>
+                            <li><a href="#" id="current_projects">Open Projects</a></li>
+                            <li><a href="#" id="meetigs">Meetings</a></li>
+                            <li><a href="#" id="members">Members</a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-10" id="main_block">
