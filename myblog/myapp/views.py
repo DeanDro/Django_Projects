@@ -16,3 +16,9 @@ def login(request):
         username = request.POST['username']
         password = request.POST['password']
         return render(request, 'dashboard.html', {'username': username, 'password': password})
+
+def dashboard(request):
+    """
+    Main projects dashboard
+    """
+    return render(request, 'dashboard.html', {'username': 'Admin'})

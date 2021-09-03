@@ -1,10 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <title>OSU Hackathon Club - Login</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     </head>
     <body>
         <div class="container-fluid">
@@ -14,6 +14,7 @@
         </div>
         <div class="container-fluid">
             <form method="POST" action="login">
+                {% csrf_token %}
                 <div class="group-form">
                     <label for="username">Username:</label>
                     <input type="text" name="username"/>
