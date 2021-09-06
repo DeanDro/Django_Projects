@@ -183,3 +183,15 @@ class Project:
         list of projects. 
         """
         self._next_step = next_projectStep
+
+    def add_next_step(self, step_name, step_owner):
+        """Creates a step and adds it in the linked list of steps"""
+        new_step = ProjectStep(step_name, step_owner)
+        if self._head is None:
+            self._head = new_step
+        else:
+            current_node = self._head
+            while current_node.get_nextStep() is not None:
+                current_node = current_node.get_nextStep()
+            current_node.set_nextStep(new_step)
+        new_step.set_nextStep(None)
