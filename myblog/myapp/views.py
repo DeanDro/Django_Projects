@@ -23,3 +23,15 @@ def dashboard(request):
     Main projects dashboard
     """
     return render(request, 'dashboard.html', {'username': 'Admin'})
+
+def add_project(request):
+    """
+    Adds a new project in the database.
+    """
+    return render(request, 'add_new_project.html')
+
+def add_project_step(request):
+    """
+    Adds a new step in a project.
+    """
+    return render(request, 'add_project_step.html')

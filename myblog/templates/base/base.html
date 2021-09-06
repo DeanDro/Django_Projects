@@ -15,7 +15,7 @@
                 background-color: darkslategray;
                 display: flex;
             }
-            html, body{
+            html, body{ 
                 height: 100%;
             }
             #main_content{
@@ -50,7 +50,7 @@
                 <div class="col-md-2" id="right_block">
                     <div id="navigation">
                         <ul id="list_options">
-                            <li><a href="#" id="new_project">New Project</a></li>
+                            <li><a href="../add_new_project" id="new_project">New Project</a></li>
                             <li><a href="#" id="current_projects">Open Projects</a></li>
                             <li><a href="#" id="meetigs">Meetings</a></li>
                             <li><a href="#" id="members">Members</a></li>
@@ -69,5 +69,8 @@
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="{% static 'script/functionality.js' %}"></script>
+        {% block script %}
+        {% endblock %}
     </body>
 </html>

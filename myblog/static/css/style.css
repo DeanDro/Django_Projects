@@ -2,3 +2,7 @@
 #hack_logo{
     max-width: 20px;
 }
+
+label{
+    font-weight: bold;
+}

@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<h3 style="margin-bottom: 1%; margin-top: 1%; font-weight: bold;">Add Step</h3>
+<br>
+<div class="container">
+    <form method="POST" action="">
+        <div class="form-group row">
+            <label for="step_name" class="col-md-2">Step Name: </label>
+            <div class="col-md-10">
+                <input type="text" id="step_name" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="step_description" class="col-md-2">Description: </label>
+            <div class="col-md-10">
+                <input type="text" id="step_description" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="step_owner" class="col-md-2">Step Owner: </label>
+            <div class="col-md-10">
+                <input type="text" id="step_owner" class="form-control"/>
+            </div>
+        </div>
+        <br>
+        <input type="submit" class="btn btn-primary"/>
+    </form>
+</div>
+{% endblock %}
