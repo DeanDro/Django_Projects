@@ -35,3 +35,9 @@ def add_project_step(request):
     Adds a new step in a project.
     """
     return render(request, 'add_project_step.html')
+
+def members(request):
+    """
+    Returns a list of team members
+    """
+    return render(request, 'members.html')

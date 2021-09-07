@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% block style %}
+<style>
+    th{
+        padding-right: 14rem;
+    }
+    table{
+        border: solid 2px black;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<h2>Hackathon Club Members</h2>
+<br>
+<table id="members_table">
+    <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Email</th>
+        <th>Username</th>
+    </tr>
+</table>
+{% endblock %}
