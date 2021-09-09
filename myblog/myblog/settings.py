@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 # I added the myapp directly because it wasn't recognizing the Django_Projects folder
-from Django_Projects.myblog import myapp
+#from Django_Projects.myblog import project_management
 #import myapp
 from pathlib import Path
 import os
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp'
+    'project_management',
 ]
 
 MIDDLEWARE = [
