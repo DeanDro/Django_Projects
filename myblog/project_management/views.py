@@ -49,3 +49,9 @@ def projects_list(request):
     """
     projects = ProjectData.objects.all()
     return render(request, 'projects_list.html', {projects: projects})
+
+def meetings_list(request):
+    """
+    Returns a page with all upcoming meetings and past meetings
+    """
+    return render(request, 'meetings.html')

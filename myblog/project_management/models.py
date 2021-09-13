@@ -23,3 +23,12 @@ class Profile(models.Model):
     name = models.CharField(max_length=50, default='admin')
     email = models.CharField(max_length=40, default='admin@admin_mail.com')
     position = models.CharField(max_length=50, default='member')
+
+
+class Meetings(models.Model):
+    """This class represents a meeting for the club"""
+
+    meeting_name = models.CharField(max_length=120, default='Next Group Meeting')
+    date = models.DateTimeField(auto_now_add=True, blank=True)
+    description = models.CharField(max_length=200, default='Setting up the date for next group meeting')
+    agenda = models.TextField(default='Setup next meeting')

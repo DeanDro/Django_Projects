@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% block style %}
+<style>
+    th{
+        padding-right: 14rem;
+    }
+    
+    table{
+        border: black 2px solid;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<table id="upcoming_meetings_table">
+    <tr>
+        <th>Meeting Name</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Agenda</th>
+    </tr>
+</table>
+{% endblock %}
