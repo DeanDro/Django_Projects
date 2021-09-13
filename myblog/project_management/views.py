@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Profile, ProjectData
+from .functionality.dashboard_view import Status
 
 # Create your views here.
 
@@ -22,7 +23,10 @@ def dashboard(request):
     """
     Main projects dashboard
     """
-    return render(request, 'dashboard.html', {'username': 'Admin'})
+    contents = ProjectData.objects.all()
+    status = Status(contents)
+
+    return render(request, 'dashboard.html', {'contents': contents})
 
 def add_project(request):
     """
