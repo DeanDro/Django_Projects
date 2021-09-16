@@ -2,16 +2,26 @@
 {% block style %}
 <style>
       th{
-        padding-right: 10rem;
+        padding-right: 9rem;
         text-align: center;
+        background-color: blue;
+        color: white;
     }
     table{
         border: solid 2px black;
     }
+    td{
+        padding: 2px;
+        overflow-wrap: normal;
+    }
+    .card{
+        width: 18rem;
+    }
 </style>
 {% endblock %}
 {% block content %}
-<div class="container-fluid">
+<h3>Open Projects</h3>
+<div class="container-fluid" style="margin-top: 1%;">
     <table id="projects_table">
         <tr>
             <th>Project Name</th>
@@ -30,5 +40,18 @@
         </tr>
         {% endfor %}
     </table>
+</div>
+<br>
+<h3>Upcoming meetings</h3>
+<div class="container-fluid">
+    {% for meeting in meetings %}
+    <div class="card text-white bg-success mb-3">
+        <div class="card-body">
+            <h4 class="card-title">{{ meeting.meeting_name }}</h4>
+            <p class="card-text">{{ meeting.description }}</p>
+            <p class="card-text" style="font-weight: bold;">{{ meeting.date }}</p>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}

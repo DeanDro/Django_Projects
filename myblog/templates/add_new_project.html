@@ -4,35 +4,36 @@
 <h2 style="margin-top: 1%; margin-bottom: 1%;">New Project</h2>
 <br>
 <div class="container">
-    <form method="POST" action="">
+    <form method="POST" action="add_new_project">
+        {% csrf_token %}
         <div class="form-group row">
             <label for="project_name" class="col-md-2">Project Name: </label>
             <div class="col-md-10">
-                <input type="text" id="project_name" class="form-control"/>
+                <input type="text" id="project_name" name="project_name" class="form-control"/>
             </div>
         </div>
         <div class="form-group row">
             <label for="project_description" class="col-md-2">Description: </label>
             <div class="col-md-10">
-                <input type="text" id="project_description" class="form-control"/>
+                <input type="text" id="project_description" name="project_description" class="form-control"/>
             </div>
         </div>
         <div class="form-group row">
             <label for="project_owner" class="col-md-2">Project Owner: </label>
             <div class="col-md-10">
-                <input type="text" id="project_owner" class="form-control"/>
+                <input type="text" id="project_owner" name="project_owner" class="form-control"/>
             </div>
         </div>
         <div class="form-group row">
             <label for="project_deadline" class="col-md-2">Deadline: </label>
             <div class="col-md-10">
-                <input type="date" id="project_deadline" class="form-control"/>
+                <input type="date" id="project_deadline" name="project_deadline" class="form-control"/>
             </div>
         </div>
         <br>
         <div id="step"></div>
         <div class="card text-white bg-primary mb-3" style="max-width: 12rem;">
-            <div class="card-header" id="add_step">Add Step</div>
+            <div class="card-header" id="add_step" style="text-align: center; font-weight: bold;">Add Step</div>
         </div>
         <br>
         <input type="submit" class="btn btn-primary"/>

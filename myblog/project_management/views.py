@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Profile, ProjectData
+from .models import Meetings, Profile, ProjectData
 from .functionality.dashboard_view import Status
 
 # Create your views here.
@@ -24,14 +24,31 @@ def dashboard(request):
     Main projects dashboard
     """
     contents = ProjectData.objects.all()
-    status = Status(contents)
+    meetings = Meetings.objects.all()
 
-    return render(request, 'dashboard.html', {'contents': contents})
+    return render(request, 'dashboard.html', {'contents': contents, 'meetings':meetings})
 
 def add_project(request):
     """
     Adds a new project in the database.
     """
+    if request.method == 'POST':
+
+        # Collect data from FORM
+        project_name = request.POST['project_name']
+        project_description = request.POST['project_description']
+        project_owner = request.POST['project_owner']
+        deadline = request.POST['project_deadline']
+        # Create a ProjectData instance and store the data from the page to the database
+        project = ProjectData.objects.create(project_name=project_name, project_description=project_description,
+                                             project_owner=project_owner, deadline=deadline)
+        project.save()  # Save data in the database
+
+        # Get the latest data from database and load them to the database
+        contents = ProjectData.objects.all()
+        meetings = Meetings.objects.all()
+        return render(request, 'dashboard.html', {'contents':contents, 'meetings':meetings})
+    
     return render(request, 'add_new_project.html')
 
 def add_project_step(request):
