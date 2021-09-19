@@ -78,4 +78,17 @@ def meetings_list(request):
     """
     meetings = Meetings.objects.all()
     today_date = datetime.datetime.now()
+
+    # Collect data from form
+    if request.method == 'POST':
+        meeting_name = request.POST['Name']
+        meeting_description = request.POST['Description']
+        meeting_date = request.POST['Date']
+        meeting_agenda = request.POST['Agenda']
+
+        # Register form into database
+        meeting_registration = Meetings.objects.create(meeting_name=meeting_name, date=meeting_date, 
+                                                       description=meeting_description, agenda=meeting_agenda)
+        meeting_registration.save()
+
     return render(request, 'meetings.html', {'meetings':meetings, 'today':today_date.date()})

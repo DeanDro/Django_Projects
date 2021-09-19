@@ -50,8 +50,13 @@
     </div>
 </div>
 <br>
-<div id="input_window">
-    {% csrf_token %}
+<div>
+    <form method="POST" action="meetings">
+        {% csrf_token %}
+        <div class="container-fluid" id="input_window">
+
+        </div>
+    </form>
 </div>
 {% endblock %}
 {% block script %}
@@ -61,17 +66,17 @@
 
     function add_meeting(){
         let win = document.getElementById('input_window');
-        let message = label_input_addition('Meeting Name') + label_input_addition('Description') 
-        message += label_input_addition('Date') + label_input_addition('Agenda')
+        let message = label_input_addition('Name') + label_input_addition('Description') 
+        message += label_input_addition('Date', 'date') + label_input_addition('Agenda')
         message += '<div class="row"><div class="col-md-6"><input type="submit" value="Submit" class="btn btn-primary"/></div>'
         message += '<div class="col-md-6"><input type="button" value="Cancel" class="btn btn-primary" id="cancel_button"/></div></div>'
         win.innerHTML = message      
     }
 
-    function label_input_addition(label_title){
+    function label_input_addition(label_title, input_type='text'){
         let group_tags_open = '<div class="form-group">'
         let label_type = `<label for="${ label_title }">${label_title}:</label>`
-        let input_text = `<input type="text" id="${label_title}" class="form-control"/>`
+        let input_text = `<input type="${input_type}" id="${label_title}" name="${label_title}" class="form-control"/>`
         let group_tags_close = "</div>"
         return group_tags_open+label_type+input_text+group_tags_close
     }
