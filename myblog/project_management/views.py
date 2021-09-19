@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Meetings, Profile, ProjectData
 from .functionality.dashboard_view import Status
+import datetime
 
 # Create your views here.
 
@@ -75,4 +76,6 @@ def meetings_list(request):
     """
     Returns a page with all upcoming meetings and past meetings
     """
-    return render(request, 'meetings.html')
+    meetings = Meetings.objects.all()
+    today_date = datetime.datetime.now()
+    return render(request, 'meetings.html', {'meetings':meetings, 'today':today_date.date()})
