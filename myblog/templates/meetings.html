@@ -17,7 +17,7 @@
 {% endblock %}
 {% block content %}
 <h2>Upcoming Meetings</h2>
-<h5>Today's date: {{ today}}</h5>
+<h5>Today's date: {{ today }}</h5>
 <div class="container-fluid">
     <table id="upcoming_meetings_table">
         <tr>
@@ -28,7 +28,7 @@
         </tr>
         {% for meeting in meetings %}
         <tr>
-        {% if meeting.date >= today %}
+        {% if meeting.date.day > today.day %}
             <td>{{ meeting.meeting_name }}</td>
             <td>{{ meeting.date }}</td>
             <td>{{ meeting.description }}</td>

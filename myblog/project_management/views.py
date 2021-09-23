@@ -78,6 +78,8 @@ def meetings_list(request):
     """
     meetings = Meetings.objects.all()
     today_date = datetime.datetime.now()
+     # Get current date
+    current_day = today_date.date().today()
 
     # Collect data from form
     if request.method == 'POST':
@@ -91,4 +93,4 @@ def meetings_list(request):
                                                        description=meeting_description, agenda=meeting_agenda)
         meeting_registration.save()
 
-    return render(request, 'meetings.html', {'meetings':meetings, 'today':today_date.date()})
+    return render(request, 'meetings.html', {'meetings':meetings, 'today':current_day})
