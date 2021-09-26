@@ -19,23 +19,8 @@
 <h2>Upcoming Meetings</h2>
 <h5>Today's date: {{ today }}</h5>
 <div class="container-fluid">
-    <table id="upcoming_meetings_table">
-        <tr>
-            <th>Meeting Name</th>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Agenda</th>
-        </tr>
-        {% for meeting in meetings %}
-        <tr>
-        {% if meeting.date.day > today.day %}
-            <td>{{ meeting.meeting_name }}</td>
-            <td>{{ meeting.date }}</td>
-            <td>{{ meeting.description }}</td>
-            <td>{{ meeting.agenda }}</td>
-        {% endif %}
-        </tr>
-        {% endfor %}
+    <table id="upcoming_meetings_table" onload="populateTable({meetings})">
+
     </table>
 </div>
 <br>
@@ -65,6 +50,9 @@
     document.getElementById('new_meeting').addEventListener('click', add_meeting);
 
     function add_meeting(){
+        /*
+        Called to add new meeting in the calendar.
+        */
         let win = document.getElementById('input_window');
         let message = label_input_addition('Name') + label_input_addition('Description') 
         message += label_input_addition('Date', 'date') + label_input_addition('Agenda')
@@ -74,11 +62,35 @@
     }
 
     function label_input_addition(label_title, input_type='text'){
+        /*Helper method to add input label and box */
         let group_tags_open = '<div class="form-group">'
         let label_type = `<label for="${ label_title }">${label_title}:</label>`
         let input_text = `<input type="${input_type}" id="${label_title}" name="${label_title}" class="form-control"/>`
         let group_tags_close = "</div>"
         return group_tags_open+label_type+input_text+group_tags_close
+    }
+
+    //Get meeting table
+    const load_meetings = document.getElementById('upcoming_meetings_table')
+
+    function returnMeetingTableHeaders(){
+        /*Return table headers*/
+        return '<tr><th>Meeting Name</th><th>Date</th><th>Description</th><th>Agenda</th></tr>'
+    }
+
+    function addTableRow(meetingName, meetingDate, meetingDescription, meetingAgenda){
+        /*Take meeting details and add them in meeting table*/
+        return `<tr><td>${meetingName}</td><td>${meetingDate}</td><td>${meetingDescription}</td><td>${meetingAgenda}</td></tr>`
+    }
+
+    function populateTable(meetingdDetails){
+        /*Populate meeting table */
+        let meeting_table = this.returnMeetingTableHeaders()
+        let newTableRow = ''
+        for (meeting in meetingsDetails){
+            meeting_table += this.addTableRow(meeting.meeting_name, meeting.date, meeting.description, meeting.agenda)
+        }
+        load_meetings.innerHTML = meeting_table
     }
 </script>
 {% endblock %}
