@@ -15,3 +15,12 @@ class Status:
 
     def test_data(self):
         print(self._data)
+
+def confirm_meeting(meetings, today):
+    """
+    This is a helper method to clear which meetings have passed
+    """
+    upcoming_meetings = []
+    for meeting in meetings:
+        upcoming_meetings.append(meeting)
+    return upcoming_meetings

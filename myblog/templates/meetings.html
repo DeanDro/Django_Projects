@@ -18,9 +18,24 @@
 {% block content %}
 <h2>Upcoming Meetings</h2>
 <h5>Today's date: {{ today }}</h5>
-<div class="container-fluid">
-    <table id="upcoming_meetings_table" onload="populateTable({meetings})">
-
+<div id="meetings_recap">
+    <table id='meetings_table'>
+        <tr>
+            <th>Meeting Name</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Agenda</th>
+        </tr>
+    {% for meeting in meetings %}
+    {% if meeting.date != today %}
+        <tr>
+            <td>{{ meeting.meeting_name }}</td>
+            <td>{{ meeting.date }}</td>
+            <td>{{ meeting.description }}</td>
+            <td>{{ meeting.agenda }}</td>
+        </tr>
+    {% endif %}
+    {% endfor %}
     </table>
 </div>
 <br>
@@ -30,7 +45,7 @@
             <button class="btn btn-primary" id="new_meeting">New Meeting</button>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-primary">Delete Meeting</button>
+            <button class="btn btn-primary" id="delete_meeting">Delete Meeting</button>
         </div>
     </div>
 </div>
@@ -57,40 +72,25 @@
         let message = label_input_addition('Name') + label_input_addition('Description') 
         message += label_input_addition('Date', 'date') + label_input_addition('Agenda')
         message += '<div class="row"><div class="col-md-6"><input type="submit" value="Submit" class="btn btn-primary"/></div>'
-        message += '<div class="col-md-6"><input type="button" value="Cancel" class="btn btn-primary" id="cancel_button"/></div></div>'
+        message += '<div class="col-md-6"><input type="button" value="Cancel" class="btn btn-primary id="cancel_button"/></div></div>'
         win.innerHTML = message      
     }
 
     function label_input_addition(label_title, input_type='text'){
         /*Helper method to add input label and box */
-        let group_tags_open = '<div class="form-group">'
+        let group_tags_open = '<div class="form-group" id="add_meeting_form">'
         let label_type = `<label for="${ label_title }">${label_title}:</label>`
         let input_text = `<input type="${input_type}" id="${label_title}" name="${label_title}" class="form-control"/>`
         let group_tags_close = "</div>"
         return group_tags_open+label_type+input_text+group_tags_close
     }
 
-    //Get meeting table
-    const load_meetings = document.getElementById('upcoming_meetings_table')
-
     function returnMeetingTableHeaders(){
         /*Return table headers*/
-        return '<tr><th>Meeting Name</th><th>Date</th><th>Description</th><th>Agenda</th></tr>'
-    }
+        let table_start = '<table id=\'meetings_table\'>'
+        table_start += '<tr><th>Meeting Name</th><th>Date</th><th>Description</th><th>Agenda</th></tr>'
+        return table_start+'</table>'
+    } 
 
-    function addTableRow(meetingName, meetingDate, meetingDescription, meetingAgenda){
-        /*Take meeting details and add them in meeting table*/
-        return `<tr><td>${meetingName}</td><td>${meetingDate}</td><td>${meetingDescription}</td><td>${meetingAgenda}</td></tr>`
-    }
-
-    function populateTable(meetingdDetails){
-        /*Populate meeting table */
-        let meeting_table = this.returnMeetingTableHeaders()
-        let newTableRow = ''
-        for (meeting in meetingsDetails){
-            meeting_table += this.addTableRow(meeting.meeting_name, meeting.date, meeting.description, meeting.agenda)
-        }
-        load_meetings.innerHTML = meeting_table
-    }
 </script>
 {% endblock %}
