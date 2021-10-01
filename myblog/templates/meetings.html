@@ -50,11 +50,32 @@
     </div>
 </div>
 <br>
-<div>
+<div id="add_new_meeting" style="visibility: hidden;">
     <form method="POST" action="meetings">
         {% csrf_token %}
         <div class="container-fluid" id="input_window">
-
+            <div class="form-group" id="add_meeting_form">
+                <label for="Name">Name:</label>
+                <input type="text" id="Name" name="Name" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="Description">Description:</label>
+                <input type="text" id="Description" name="Description" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="Date">Date:</label>
+                <input type="date" id="Date" name="Date" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="Agenda">Description:</label>
+                <input type="text" id="Agenda" name="Agenda" class="form-control"/>
+            </div>
+            <div class="row"><div class="col-md-6">
+                <input type="submit" value="Submit" class="btn btn-primary"/>
+            </div>
+            <div class="col-md-6">
+                <input type="button" value="Cancel" class="btn btn-primary" id="cancel_button"/>
+            </div></div>
         </div>
     </form>
 </div>
@@ -63,26 +84,15 @@
 <script>
 
     document.getElementById('new_meeting').addEventListener('click', add_meeting);
+    document.getElementById('cancel_button').addEventListener('click', add_meeting);
 
     function add_meeting(){
         /*
         Called to add new meeting in the calendar.
         */
-        let win = document.getElementById('input_window');
-        let message = label_input_addition('Name') + label_input_addition('Description') 
-        message += label_input_addition('Date', 'date') + label_input_addition('Agenda')
-        message += '<div class="row"><div class="col-md-6"><input type="submit" value="Submit" class="btn btn-primary"/></div>'
-        message += '<div class="col-md-6"><input type="button" value="Cancel" class="btn btn-primary id="cancel_button"/></div></div>'
-        win.innerHTML = message      
-    }
-
-    function label_input_addition(label_title, input_type='text'){
-        /*Helper method to add input label and box */
-        let group_tags_open = '<div class="form-group" id="add_meeting_form">'
-        let label_type = `<label for="${ label_title }">${label_title}:</label>`
-        let input_text = `<input type="${input_type}" id="${label_title}" name="${label_title}" class="form-control"/>`
-        let group_tags_close = "</div>"
-        return group_tags_open+label_type+input_text+group_tags_close
+        let win_visibility = document.getElementById('add_new_meeting');
+        let meeting_visibility = win_visibility.style.visibility === 'visible' ? 'hidden':'visible'
+        win_visibility.style.visibility = meeting_visibility
     }
 
     function returnMeetingTableHeaders(){

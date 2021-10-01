@@ -78,7 +78,7 @@ def meetings_list(request):
     """
     all_meetings = Meetings.objects.all()   # Get all meetings
     today_date = datetime.datetime.now()
-     # Get current date
+    # Get current date
     current_day = today_date.date().today()
     # Get upcoming meetings
     meetings = confirm_meeting(all_meetings, today_date)

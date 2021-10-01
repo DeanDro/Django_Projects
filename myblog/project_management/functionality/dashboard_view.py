@@ -22,5 +22,6 @@ def confirm_meeting(meetings, today):
     """
     upcoming_meetings = []
     for meeting in meetings:
+        print(today)
         upcoming_meetings.append(meeting)
     return upcoming_meetings
