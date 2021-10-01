@@ -24,8 +24,9 @@ def dashboard(request):
     """
     Main projects dashboard
     """
-    contents = ProjectData.objects.all()
-    meetings = Meetings.objects.all()
+    contents = ProjectData.objects.all()    # Get all projects
+    all_meetings = Meetings.objects.all()   # Get all meetings
+    meetings = confirm_meeting(all_meetings)    # Sort passed meetings
 
     return render(request, 'dashboard.html', {'contents': contents, 'meetings':meetings})
 
@@ -81,7 +82,7 @@ def meetings_list(request):
     # Get current date
     current_day = today_date.date().today()
     # Get upcoming meetings
-    meetings = confirm_meeting(all_meetings, today_date)
+    meetings = confirm_meeting(all_meetings)
 
     # Collect data from form
     if request.method == 'POST':

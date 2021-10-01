@@ -11,8 +11,8 @@ class ProjectData(models.Model):
     project_owner = models.CharField(max_length=100, default='K')
     project_description = models.CharField(max_length=150, default='Setup the team meeting for next week')
     members_list = models.CharField(max_length=150, default='myself')
-    start_date = models.DateTimeField(auto_now_add=True, blank=True)
-    deadline = models.CharField(max_length=12)
+    start_date = models.DateField(auto_now_add=True, blank=True)
+    deadline = models.DateField(blank=True)
     project_completed = models.CharField(max_length=10, default='No')
 
 
@@ -28,8 +28,7 @@ class Profile(models.Model):
 class Meetings(models.Model):
     """This class represents a meeting for the club"""
     
-    today = datetime.datetime.now() # We store today's date for default value
     meeting_name = models.CharField(max_length=120, default='Next Group Meeting')
-    date = models.DateTimeField(blank=True)
+    date = models.DateField(blank=True)
     description = models.CharField(max_length=200, default='Setting up the date for next group meeting')
     agenda = models.TextField(default='Setup next meeting')

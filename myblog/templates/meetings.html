@@ -71,7 +71,7 @@
                 <input type="text" id="Agenda" name="Agenda" class="form-control"/>
             </div>
             <div class="row"><div class="col-md-6">
-                <input type="submit" value="Submit" class="btn btn-primary"/>
+                <input type="submit" value="Submit" class="btn btn-primary" id="submit_button"/>
             </div>
             <div class="col-md-6">
                 <input type="button" value="Cancel" class="btn btn-primary" id="cancel_button"/>
@@ -85,6 +85,9 @@
 
     document.getElementById('new_meeting').addEventListener('click', add_meeting);
     document.getElementById('cancel_button').addEventListener('click', add_meeting);
+    document.getElementById('submit_button').addEventListener('click', ()=>{
+        window.location.href = './dashboard.html'
+    })
 
     function add_meeting(){
         /*
