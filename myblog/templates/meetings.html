@@ -29,7 +29,11 @@
     {% for meeting in meetings %}
     {% if meeting.date != today %}
         <tr>
-            <td>{{ meeting.meeting_name }}</td>
+            <!--Clicking on the checkbox passes the entire meeting details to a JS function for deletion/change. The updated_selected_element
+            function will be taking the event and from there it will select the value of the checkbox-->
+            <td><input type="checkbox" id="{{meeting.meeting_name}}" value="{{meeting}}" name="{{meeting.meeting_name}}"/> 
+                {{ meeting.meeting_name }}
+            </td>
             <td>{{ meeting.date }}</td>
             <td>{{ meeting.description }}</td>
             <td>{{ meeting.agenda }}</td>
@@ -41,11 +45,14 @@
 <br>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <button class="btn btn-primary" id="new_meeting">New Meeting</button>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <button class="btn btn-primary" id="delete_meeting">Delete Meeting</button>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary" id="edit_meeting">Edit Meeting</button>
         </div>
     </div>
 </div>
@@ -86,8 +93,18 @@
     document.getElementById('new_meeting').addEventListener('click', add_meeting);
     document.getElementById('cancel_button').addEventListener('click', add_meeting);
     document.getElementById('submit_button').addEventListener('click', ()=>{
+        //Direct back to dashboard
         window.location.href = './dashboard.html'
     })
+
+    document.getElementById('edit_meeting').addEventListener('click', ()=>{
+        //Tetsing
+        let input_value = document.querySelectorAll('input[type=checkbox]')
+        alert(input_value[0])
+    })
+
+    // Global variable to keep track of selected elements
+    let selected_meeting = null
 
     function add_meeting(){
         /*
@@ -104,6 +121,18 @@
         table_start += '<tr><th>Meeting Name</th><th>Date</th><th>Description</th><th>Agenda</th></tr>'
         return table_start+'</table>'
     } 
+
+    function update_selected_element(e){
+        selected_meeting = document.querySelector('checkbox').checked
+        alert('Test test')
+    }
+
+    function edit_meeting(meeting_details){
+        /*Changes a meeting details*/
+        add_meeting()
+        document.getElementById('Name').textContent = meeting_details.meeting_name
+        document.getElementById('Description').textContent = meeting_details.description
+    }
 
 </script>
 {% endblock %}
