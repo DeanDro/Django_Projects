@@ -97,3 +97,12 @@ def meetings_list(request):
         meeting_registration.save()
 
     return render(request, 'meetings.html', {'meetings':meetings, 'today':current_day})
+
+def edit_meeting(request, meeting_id):
+    """
+    Method to open a new page for editing existing meeting
+    """
+    # Get the right meeting from database
+    meeting_details = Meetings.objects.get(meeting_name=meeting_id)
+        
+    return render(request, 'edit_meeting.html', { 'meeting_details':meeting_details})

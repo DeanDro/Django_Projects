@@ -100,7 +100,9 @@
     document.getElementById('edit_meeting').addEventListener('click', ()=>{
         //Tetsing
         let input_value = document.querySelectorAll('input[type=checkbox]')
-        alert(input_value[0])
+        let meeting_details = input_value[0].id
+        //Directs user to a separate page to edit the meeting page
+        window.location.href = `./edit_meeting/${meeting_details}`
     })
 
     // Global variable to keep track of selected elements
@@ -125,13 +127,6 @@
     function update_selected_element(e){
         selected_meeting = document.querySelector('checkbox').checked
         alert('Test test')
-    }
-
-    function edit_meeting(meeting_details){
-        /*Changes a meeting details*/
-        add_meeting()
-        document.getElementById('Name').textContent = meeting_details.meeting_name
-        document.getElementById('Description').textContent = meeting_details.description
     }
 
 </script>

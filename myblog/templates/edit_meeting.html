@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+{% block style %}
+{% endblock %}
+{% block content %}
+<br>
+<h2>Edit Meeting</h2>
+<div id="edit_meeting_form">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="container-fluid" id="input_window">
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input type="text" id="Name" name="Name" class="form-control" value="{{meeting_details.meeting_name}}"/>
+            </div>
+            <div class="form-group">
+                <label for="Description">Description:</label>
+                <input type="text" id="Description" name="Description" class="form-control" value="{{meeting_details.description}}"/>
+            </div>
+            <div class="form-group">
+                <label for="Date">Date:</label>
+                <input type="date" id="Date" name="Date" class="form-control" value="{{meeting_details.date}}"/>
+            </div>
+            <div class="form-group">
+                <label for="Agenda">Description:</label>
+                <input type="text" id="Agenda" name="Agenda" class="form-control" value="{{meeting_details.agenda}}"/>
+            </div>
+            <div class="row"><div class="col-md-6">
+                <input type="submit" value="Submit" class="btn btn-primary" id="submit_button"/>
+            </div>
+            <div class="col-md-6">
+                <input type="button" value="Cancel" class="btn btn-primary" id="cancel_button"/>
+            </div></div>
+        </div>
+    </form>
+</div>
+{% endblock %}
