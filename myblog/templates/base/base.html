@@ -37,6 +37,9 @@
                 color: white;
                 text-decoration: none;
             }
+            #member_id{
+                color: white;
+            }
         </style>
         {% block style %}
         {% endblock %}
@@ -46,6 +49,9 @@
             <a class="navbar-brand" href="../dashboard">
                 <img src="{% static 'media/osu_club.png' %}" alt="hackathon_club_logo" id="hack_logo"/>
             </a>
+            <div class="my-sm-0">
+                <a id="member_id" href="#">Member Login</a>
+            </div>
         </nav>
         <div class="container-fluid" id="main_content">
             <div class="row h-100">
