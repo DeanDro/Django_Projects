@@ -41,3 +41,9 @@ def members(request):
     Returns a list of team members
     """
     return render(request, 'members.html')
+
+def member_login(request):
+    """
+    Method to login a member to modify previlage
+    """
+    return render(request, 'member_login.html')
